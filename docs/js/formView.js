@@ -28,12 +28,12 @@ function validateForm(){
     }
     
     //passing the input information to class and create a new class
-    var room = new roomUsage(number_SeatsTotal);
+    //var room = new roomUsage(number_SeatsTotal);
     //console.log(room)
     
     
     //convert class to JSON.stringfy
-    Display(room);
+    Display();
     
 }//END OF VALIDATEFORM()
 

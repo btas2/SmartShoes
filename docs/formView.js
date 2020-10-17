@@ -1,0 +1,75 @@
+"use strict";
+function validateForm(){
+    
+    /* declare the input that needs to include letter and numbers eg:F106 */
+    var number= ["0","1","2","3","4","5","6","7","8","9"];
+    
+    /* initialise variables */ 
+    var text_seatsTotal=document.forms["RoomUsage"]["seatsTotal"].value
+    var number_SeatsTotal=Number(text_seatsTotal)
+
+    var st=text_seatsTotal.length
+
+     //make sure the field is filled by user with positive numbers
+    if(st===0){
+        alert("You have not filled in the total number of sensors")
+        return false
+    }
+    
+    for (var i=0;i<st;i++){
+        
+        var checkST=text_seatsTotal[i];
+        var result=number.includes(checkST);
+        if (result===false){
+            alert("Invalid input for total amount of sensors");
+            return false;
+        }
+           
+    }
+    
+    //passing the input information to class and create a new class
+    var room = new roomUsage(number_SeatsTotal);
+    //console.log(room)
+    
+    
+    //convert class to JSON.stringfy
+    Display(room);
+    
+}//END OF VALIDATEFORM()
+
+window.onload=function() {
+  var promised = document.getElementsByName("Promised4");
+  for (var i=0;i<promised.length;i++) {
+    promised[i].onclick=function() {
+      var rads = this.form[this.name];
+      for (var i=0;i<rads.length;i++) {
+        var textField = this.form[rads[i].value.toLowerCase()+"Specify"];
+          console.log(rads[i].value.toLowerCase()+"Specify");
+        if (textField) textField.disabled = !rads[i].checked;
+      }    
+    }    
+  }
+}       
+
+
+function Display() {
+    // Connect the table with the js file
+    var input = document.getElementById("Seat_Total").value;
+    var time = [11,22,33,44,55,66];
+    
+    Table.rows[0].cells[0].innerHTML = time[input-1];
+    
+    var chargeLevel = 0;
+    
+    if (document.getElementById("otherSpecify").disabled == true){
+        chargeLevel = 100;
+
+    }else{
+        
+        chargeLevel = document.getElementById("otherSpecify").value;
+    }
+
+    console.log(document.getElementById("otherSpecify").value);
+    Table.rows[0].cells[1].innerHTML = chargeLevel;
+}
+

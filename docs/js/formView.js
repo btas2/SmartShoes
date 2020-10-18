@@ -74,9 +74,15 @@ function Display() {
     if (input == 2){
         dischargeTime = (10-chargeLevel)/(-5.15);
         chargeTime = ((100-10)/0.0025)/3600;
+        
+        Table.rows[0].cells[0].innerHTML = dischargeTime.toFixed(2);
+        Table.rows[0].cells[1].innerHTML = chargeTime.toFixed(2);
     }else if (input == 3){
         dischargeTime = (10-chargeLevel)/(-4.23);
         chargeTime = ((100-10)/0.003153988868)/3600;
+        
+        Table.rows[0].cells[0].innerHTML = dischargeTime.toFixed(2);
+        Table.rows[0].cells[1].innerHTML = chargeTime.toFixed(2);
     }else{
         
         dischargeTime = "N/A";
@@ -84,7 +90,6 @@ function Display() {
     }
     
     console.log(document.getElementById("otherSpecify").value);
-    Table.rows[0].cells[0].innerHTML = dischargeTime.toFixed(2);
-    Table.rows[0].cells[1].innerHTML = chargeTime.toFixed(2);
+    Table.rows[0].cells[0].innerHTML = dischargeTime;
+    Table.rows[0].cells[1].innerHTML = chargeTime;
 }
-

@@ -87,9 +87,11 @@ function Display() {
         
         dischargeTime = "N/A";
         chargeTime = "N/A";
+        
+        Table.rows[0].cells[0].innerHTML = dischargeTime;
+        Table.rows[0].cells[1].innerHTML = chargeTime;
     }
     
     console.log(document.getElementById("otherSpecify").value);
-    Table.rows[0].cells[0].innerHTML = dischargeTime;
-    Table.rows[0].cells[1].innerHTML = chargeTime;
+
 }

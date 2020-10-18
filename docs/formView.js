@@ -56,8 +56,9 @@ function Display() {
     // Connect the table with the js file
     var input = document.getElementById("Seat_Total").value;
     var time = [11,22,33,44,55,66];
+    var dischargeTime = [];
+    var chargeTime = [];
     
-    Table.rows[0].cells[0].innerHTML = time[input-1];
     
     var chargeLevel = 0;
     
@@ -68,8 +69,22 @@ function Display() {
         
         chargeLevel = document.getElementById("otherSpecify").value;
     }
-
+    
+    //Logic
+    if (input == 2){
+        dischargeTime = (10-chargeLevel)/(-5.15);
+        chargeTime = ((100-10)/0.0025)/3600;
+    }else if (input == 3){
+        dischargeTime = (10-chargeLevel)/(-4.23);
+        chargeTime = ((100-10)/0.003153988868)/3600;
+    }else{
+        
+        dischargeTime = "N/A";
+        chargeTime = "N/A";
+    }
+    
     console.log(document.getElementById("otherSpecify").value);
-    Table.rows[0].cells[1].innerHTML = chargeLevel;
+    Table.rows[0].cells[0].innerHTML = dischargeTime.toFixed(2);
+    Table.rows[0].cells[1].innerHTML = chargeTime.toFixed(2);
 }
 
